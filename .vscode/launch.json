@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/server/Core.Api/bin/Debug/net8.0/Core.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/server/Core.Api",
+            "stopAtEntry": false,
+            // "serverReadyAction": {
+            //     "action": "openExternally",
+            //     "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            // },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:7140;http://localhost:80",
+                "PRIMARY_DB_HOST": "localhost",
+                "PRIMARY_DB_PORT": "35432",
+                "PRIMARY_DB_NAME": "highloadsocial",
+                "PRIMARY_DB_USER": "postgres",
+                "PRIMARY_DB_PASSWORD": "postgres"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/server/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}

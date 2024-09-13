@@ -1,0 +1,40 @@
+@host=localhost:8080
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMYWR5R2FnYSIsImdpdmVuX25hbWUiOiJMYWR5IiwiZmFtaWx5X25hbWUiOiJHYWdhIiwianRpIjoiODIwOTRhNTktOTczNS00NzAzLWE0NTYtYjUzYzMwOTZkZDA2IiwiZXhwIjoyMDQxMTk1OTgxLCJpc3MiOiJIaWdobG9hZFNvY2lhbCIsImF1ZCI6IkhpZ2hsb2FkU29jaWFsIn0.3TVvta8d-pXCz9_AFRB-Anp9Sx0a5hBFXYxyrVtFIIQ
+
+### Login
+POST http://{{host}}/login
+Content-Type: application/json
+
+{
+  "id": "LadyGaga",
+  "password": "password"
+}
+
+### List
+GET http://{{host}}/post/list
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### Feed
+GET http://{{host}}/post/feed?offset=100&limit=25
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### GetById
+GET http://{{host}}/post/get/fcbcf1e5-7acb-4e0b-9fb5-df32f85d882d
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### Delete
+PUT http://{{host}}/post/delete/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### Create
+POST http://{{host}}/post/create
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "text": "Lorem Ipsum"
+}

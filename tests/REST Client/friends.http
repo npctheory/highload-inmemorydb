@@ -1,0 +1,26 @@
+@host=localhost:80
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbnRlclNob3c5MzcyIiwiZ2l2ZW5fbmFtZSI6IldpbGxpYW0iLCJmYW1pbHlfbmFtZSI6IldhdHNvbiIsImp0aSI6ImYzYzM1ZjExLWRhMWItNDRkOS05ZTVmLWRlNGQzNTc4ZmZhMyIsImV4cCI6MTcyOTA0NzYwNiwiaXNzIjoiSGlnaGxvYWRTb2NpYWwiLCJhdWQiOiJIaWdobG9hZFNvY2lhbCJ9.JdThIhc8AK6bI5gAdo3Om3sLqhBCjRRzotQLF1qF7vM
+### Login
+POST http://{{host}}/login
+Content-Type: application/json
+
+{
+  "id": "EnterShow9372",
+  "password": "password"
+}
+
+### List friends
+GET http://{{host}}/friend/list
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### Delete friend
+PUT http://{{host}}/friend/delete/AlthoughAhead5680
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### Set friend
+PUT http://{{host}}/friend/set/AlthoughAhead5680
+Content-Type: application/json
+Authorization: Bearer {{token}}

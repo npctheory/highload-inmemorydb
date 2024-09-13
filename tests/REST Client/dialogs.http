@@ -1,0 +1,31 @@
+@host=localhost:8080
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbGVjdGlvbkxvdzQwNTQiLCJnaXZlbl9uYW1lIjoiTGVhaCIsImZhbWlseV9uYW1lIjoiU3RvbmUiLCJqdGkiOiI5NzdjMGY2My00MWI2LTRmZGYtOWFlOC1mOWY5YWU5N2MwY2EiLCJleHAiOjIwNDE1NDAyMDksImlzcyI6IkhpZ2hsb2FkU29jaWFsIiwiYXVkIjoiSGlnaGxvYWRTb2NpYWwifQ.7wJh-mpEafm321yqnJ0-9ZFF_frWqHh3NUchD8bUCMI
+
+### Login
+POST http://{{host}}/login
+Content-Type: application/json
+
+{
+  "id": "ElectionLow4054",
+  "password": "password"
+}
+
+### ListDialogs
+GET http://{{host}}/dialog/list
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### ListMessages
+GET http://{{host}}/dialog/ElectionLow4054/list
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### SendMessage
+POST http://{{host}}/dialog/ElectionLow4054/send
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "text": "Sup"
+}

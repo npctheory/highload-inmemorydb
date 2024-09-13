@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 35432,
+            "driver": "PostgreSQL",
+            "name": "pg_master",
+            "group": "HighloadSocial",
+            "database": "postgres",
+            "username": "postgres",
+            "password": "postgres"
+        }
+    ]
+}

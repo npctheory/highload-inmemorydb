@@ -1,0 +1,7 @@
+# Blazor
+client/**/bin/
+client/**/obj/
+
+# .NET
+server/**/bin/
+server/**/obj/

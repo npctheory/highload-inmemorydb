@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "6d496cd2-535e-4495-86d2-a5b07601284b",
+		"name": "LadyGaga",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38189369"
+	},
+	"item": [
+		{
+			"name": "Post List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/post/list",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Delete",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/post/delete/3b24ab84-90d8-46e9-9633-60adf18adf60",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"delete",
+						"3b24ab84-90d8-46e9-9633-60adf18adf60"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\"lorem ipsum\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/post/create",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"create"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"lorem ipsum dolor\",\r\n    \"id\" : \"3b24ab84-90d8-46e9-9633-60adf18adf60\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/post/update",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"update"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "jwt",
+		"jwt": [
+			{
+				"key": "header",
+				"value": "{}",
+				"type": "string"
+			},
+			{
+				"key": "payload",
+				"value": "{\r\n  \"sub\": \"{{sub}}\",\r\n  \"given_name\": \"{{given_name}}\",\r\n  \"family_name\": \"{{family_name}}\",\r\n  \"jti\": \"{{jti}}\",\r\n  \"exp\": {{exp}},\r\n  \"iss\": \"{{iss}}\",\r\n  \"aud\": \"{{aud}}\"\r\n}",
+				"type": "string"
+			},
+			{
+				"key": "secret",
+				"value": "this-is-a-very-secure-and-long-key-32-bytes-long",
+				"type": "string"
+			},
+			{
+				"key": "algorithm",
+				"value": "HS256",
+				"type": "string"
+			},
+			{
+				"key": "isSecretBase64Encoded",
+				"value": false,
+				"type": "boolean"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "headerPrefix",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "queryParamKey",
+				"value": "token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "sub",
+			"value": "LadyGaga",
+			"type": "string"
+		},
+		{
+			"key": "given_name",
+			"value": "Lady",
+			"type": "string"
+		},
+		{
+			"key": "family_name",
+			"value": "Gaga",
+			"type": "string"
+		},
+		{
+			"key": "jti",
+			"value": "c1de33ce-4d84-4a1d-8ee2-f241a108d1f1",
+			"type": "string"
+		},
+		{
+			"key": "exp",
+			"value": "1757262322",
+			"type": "string"
+		},
+		{
+			"key": "iss",
+			"value": "HighloadSocial",
+			"type": "string"
+		},
+		{
+			"key": "aud",
+			"value": "HighloadSocial",
+			"type": "string"
+		}
+	]
+}

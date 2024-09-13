@@ -1,0 +1,346 @@
+{
+	"info": {
+		"_postman_id": "caabca25-df61-4a6d-adc4-0dcb367e8719",
+		"name": "User(REST HTTP)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38189369"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"User\",\r\n  \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/login",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/user/get/LadyGaga",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"get",
+						"LadyGaga"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/user/search?first_name=L&second_name=G&",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"user",
+						"search"
+					],
+					"query": [
+						{
+							"key": "first_name",
+							"value": "L"
+						},
+						{
+							"key": "second_name",
+							"value": "G"
+						},
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Friend List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/friend/list",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"friend",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Friend Set",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/friend/set/AccountLess3602",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"friend",
+						"set",
+						"AccountLess3602"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Friend Delete",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/friend/delete/AccountLess3602",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"friend",
+						"delete",
+						"AccountLess3602"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Feed",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/post/feed?offset=0&limit=100",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"feed"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{host}}/post/list",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\"Lorem Ipsum3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/post/create",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Delete",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\"Lorem Ipsum\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host}}/post/delete/fc853e20-78f1-456b-80a4-dc6f40805f3a",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"post",
+						"delete",
+						"fc853e20-78f1-456b-80a4-dc6f40805f3a"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIiwiZ2l2ZW5fbmFtZSI6IlVzZXIiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJqdGkiOiI2ZjE5ZWIyZS1kNTBjLTRmMjEtYTljZi02MWE1MjBhYmY2ZjciLCJleHAiOjIwNDExNDgzNjEsImlzcyI6IkhpZ2hsb2FkU29jaWFsIiwiYXVkIjoiSGlnaGxvYWRTb2NpYWwifQ.trR-CQjF_HV3FLcTtgMUg1oR2UjkaojT25QiwQpF4xw",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

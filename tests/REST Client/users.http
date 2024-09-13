@@ -1,0 +1,32 @@
+@host=localhost:80
+
+### Get by id
+GET http://{{host}}/user/get/EnterShow9372
+Content-Type: application/json
+
+### Search
+GET http://{{host}}/user/search?first_name=W&second_name=W
+Content-Type: application/json
+
+### Login
+POST http://{{host}}/login
+Content-Type: application/json
+
+{
+  "id": "User",
+  "password": "password"
+}
+
+
+### Register
+POST http://{{host}}/register
+Content-Type: application/json
+
+{
+  "first_name": "John",
+  "second_name": "Doe",
+  "birthdate": "1990-01-01",
+  "biography": "Software developer with a passion for open-source projects.",
+  "city": "New York",
+  "password": "password"
+}
