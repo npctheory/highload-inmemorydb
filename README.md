@@ -70,7 +70,7 @@ for _, key in ipairs(combinedKeys) do
         otherUser = string.sub(key, 1, string.find(key, ':') - 1)
     end
 
-    dialogs[otherUser] = true  -- Ensure unique dialogs
+    dialogs[otherUser] = true
 end
 
 local result = {}
