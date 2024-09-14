@@ -110,5 +110,9 @@ return messages
 ### Нагрузочное тестирование  
 Нагрузка на запись в Postgres  
 
+[Postgres.webm](https://github.com/user-attachments/assets/03932293-0cda-4afe-8f08-2636f3222384)
 
 Нагрузка на запись в Redis  
+
+[Redis.webm](https://github.com/user-attachments/assets/bbdb97d8-0534-49bb-b54d-9f9d20eda6db)
+
