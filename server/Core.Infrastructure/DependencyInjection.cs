@@ -66,12 +66,19 @@ namespace Core.Infrastructure
                 return new PostRepository(connectionString, mapper);
             });
 
+            // services.AddScoped<IDialogRepository>(sp =>
+            // {
+            //     var connectionString = configuration.GetSection("DatabaseSettings:ConnectionString").Value;
+            //     var mapper = sp.GetRequiredService<IMapper>();
+            //     return new CitusDialogRepository(connectionString, mapper);
+            // });
+
             services.AddScoped<IDialogRepository>(sp =>
             {
-                var connectionString = configuration.GetSection("DatabaseSettings:ConnectionString").Value;
-                var mapper = sp.GetRequiredService<IMapper>();
-                return new CitusDialogMessageRepository(connectionString, mapper);
+                var redis = sp.GetRequiredService<IConnectionMultiplexer>();
+                return new RedisDialogRepository(redis, databaseIndex: 1);
             });
+
 
             return services;
         }

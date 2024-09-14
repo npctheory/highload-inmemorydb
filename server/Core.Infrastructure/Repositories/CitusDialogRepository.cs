@@ -9,12 +9,12 @@ using AutoMapper;
 
 namespace Core.Infrastructure.Repositories
 {
-    public class CitusDialogMessageRepository : IDialogRepository
+    public class CitusDialogRepository : IDialogRepository
     {
         private readonly string _connectionString;
         private readonly IMapper _mapper;
 
-        public CitusDialogMessageRepository(string connectionString, IMapper mapper)
+        public CitusDialogRepository(string connectionString, IMapper mapper)
         {
             _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));

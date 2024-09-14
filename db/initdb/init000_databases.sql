@@ -1,8 +1,6 @@
 CREATE USER docker;
 CREATE DATABASE highloadsocial;
 GRANT ALL PRIVILEGES ON DATABASE highloadsocial TO docker;
-ALTER SYSTEM SET wal_level = 'logical';
-SELECT pg_reload_conf();
 
 \c highloadsocial;
 
