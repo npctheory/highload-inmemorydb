@@ -21,7 +21,8 @@
                 "PRIMARY_DB_PORT": "35432",
                 "PRIMARY_DB_NAME": "highloadsocial",
                 "PRIMARY_DB_USER": "postgres",
-                "PRIMARY_DB_PASSWORD": "postgres"
+                "PRIMARY_DB_PASSWORD": "postgres",
+                "DialogRepositorySettings__Type" : "Redis"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/server/Views"

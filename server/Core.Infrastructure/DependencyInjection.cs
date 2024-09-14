@@ -42,9 +42,6 @@ namespace Core.Infrastructure
                 return new RedisCacheService(redis, databaseIndex: 0);
             });
 
-            // Register RedisMessageRepository with database 1
-            // services.AddSingleton<IMessageRepository>(sp => new RedisMessageRepository(redis, databaseIndex: 1));
-
             services.AddScoped<IUserRepository>(sp =>
             {
                 var connectionString = configuration.GetSection("DatabaseSettings:ConnectionString").Value;
@@ -66,18 +63,29 @@ namespace Core.Infrastructure
                 return new PostRepository(connectionString, mapper);
             });
 
-            // services.AddScoped<IDialogRepository>(sp =>
-            // {
-            //     var connectionString = configuration.GetSection("DatabaseSettings:ConnectionString").Value;
-            //     var mapper = sp.GetRequiredService<IMapper>();
-            //     return new CitusDialogRepository(connectionString, mapper);
-            // });
+            var repositoryType = configuration.GetSection("DialogRepositorySettings:Type").Value;
 
-            services.AddScoped<IDialogRepository>(sp =>
+            if (repositoryType == "Redis")
             {
-                var redis = sp.GetRequiredService<IConnectionMultiplexer>();
-                return new RedisDialogRepository(redis, databaseIndex: 1);
-            });
+                services.AddScoped<IDialogRepository>(sp =>
+                {
+                    var redis = sp.GetRequiredService<IConnectionMultiplexer>();
+                    return new RedisDialogRepository(redis, databaseIndex: 1);
+                });
+            }
+            else if (repositoryType == "Postgres")
+            {
+                services.AddScoped<IDialogRepository>(sp =>
+                {
+                    var connectionString = configuration.GetSection("DatabaseSettings:ConnectionString").Value;
+                    var mapper = sp.GetRequiredService<IMapper>();
+                    return new PostgresDialogRepository(connectionString, mapper);
+                });
+            }
+            else
+            {
+                throw new Exception("Invalid repository type specified in configuration.");
+            }
 
 
             return services;

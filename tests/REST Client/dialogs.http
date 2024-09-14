@@ -1,23 +1,23 @@
-@host=localhost:80
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsImdpdmVuX25hbWUiOiJBZG1pbiIsImZhbWlseV9uYW1lIjoiQWRtaW4iLCJqdGkiOiI5NDFkNmJiMS01NDQ4LTQwMTgtOTY0ZC05YzIxYzE1NDFiY2IiLCJleHAiOjIwNDE2Mzk4MTksImlzcyI6IkhpZ2hsb2FkU29jaWFsIiwiYXVkIjoiSGlnaGxvYWRTb2NpYWwifQ.AeRwl1M-uEHHfGPnCZ6jwKEhTAKGMBeKl2Gncay1bFw
+@host=localhost:8080
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJMYWR5R2FnYSIsImdpdmVuX25hbWUiOiJMYWR5IiwiZmFtaWx5X25hbWUiOiJHYWdhIiwianRpIjoiMDU4OGJlZjYtMjg1Mi00ZmJiLWFlNjctYzZhYjZhN2JmOWQ3IiwiZXhwIjoyMDQxNjQ0NDg0LCJpc3MiOiJIaWdobG9hZFNvY2lhbCIsImF1ZCI6IkhpZ2hsb2FkU29jaWFsIn0.tSDnI7hU4xDTRm-oJG9ygytjK8XlixYmKXNfgmIpLLU
 
 ### Login
 POST http://{{host}}/login
 Content-Type: application/json
 
 {
-  "id": "Admin",
+  "id": "LadyGaga",
   "password": "password"
 }
 
 
 ### SendMessage
-POST http://{{host}}/dialog/Admin/send
+POST http://{{host}}/dialog/User/send
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "text": "Sup Admin"
+  "text": "Sup User"
 }
 
 ### ListDialogs
