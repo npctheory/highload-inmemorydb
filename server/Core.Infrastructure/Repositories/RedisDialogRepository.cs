@@ -17,7 +17,9 @@ public class RedisDialogRepository : IDialogRepository
     public async Task<DialogMessage> SendMessage(DialogMessage message)
     {
         var key = message.Id.ToString();
-        var result = await _database.ScriptEvaluateAsync(RedisDialogRepositoryScripts.SendMessageLuaScript, new RedisKey[] { }, new RedisValue[]
+        var script = RedisDialogRepositoryScripts.SendMessageLuaScript;
+
+        var result = await _database.ScriptEvaluateAsync(script, new RedisKey[] { }, new RedisValue[]
         {
             key,
             message.SenderId,
@@ -40,8 +42,11 @@ public class RedisDialogRepository : IDialogRepository
         throw new NotImplementedException();
     }
 
-    public Task<List<Dialog>> ListDialogs(string user)
-    {
-        throw new NotImplementedException();
-    }
+public async Task<List<Dialog>> ListDialogs(string user)
+{
+    var script = RedisDialogRepositoryScripts.ListDialogsLuaScript;
+    var result = (RedisValue[])await _database.ScriptEvaluateAsync(script, new RedisKey[] { }, new RedisValue[] { user });
+    var dialogList = result.Select(agentId => new Dialog { AgentId = agentId }).ToList();
+    return dialogList;
+}
 }

@@ -1,13 +1,23 @@
 @host=localhost:80
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJFbGVjdGlvbkxvdzQwNTQiLCJnaXZlbl9uYW1lIjoiTGVhaCIsImZhbWlseV9uYW1lIjoiU3RvbmUiLCJqdGkiOiI1OTRlNzkyNS05ZmIwLTRiNWItODNlZS01MGJmZmEwZWEyNmUiLCJleHAiOjIwNDE1NDg2NjUsImlzcyI6IkhpZ2hsb2FkU29jaWFsIiwiYXVkIjoiSGlnaGxvYWRTb2NpYWwifQ.ZNelR4ziCAsGo9mo1vtz146a0Iu1nmDkuU6qgONDMt4
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVc2VyIiwiZ2l2ZW5fbmFtZSI6IlVzZXIiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJqdGkiOiIxMzk5NGM3My01ZTkzLTQyZGUtODA0ZC0yMDYzYzA3N2ZhM2IiLCJleHAiOjIwNDE2MzgzNzUsImlzcyI6IkhpZ2hsb2FkU29jaWFsIiwiYXVkIjoiSGlnaGxvYWRTb2NpYWwifQ.BXl1O9uGSJAfdV6vpT9b2kwZqchHjEQvrvs24W4lSd0
 
 ### Login
 POST http://{{host}}/login
 Content-Type: application/json
 
 {
-  "id": "ElectionLow4054",
+  "id": "User",
   "password": "password"
+}
+
+
+### SendMessage
+POST http://{{host}}/dialog/LadyGaga/send
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "text": "Sup"
 }
 
 ### ListDialogs
@@ -16,16 +26,6 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ### ListMessages
-GET http://{{host}}/dialog/ElectionLow4054/list
+GET http://{{host}}/dialog/Admin/list
 Content-Type: application/json
 Authorization: Bearer {{token}}
-
-
-### SendMessage
-POST http://{{host}}/dialog/ElectionLow4054/send
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-  "text": "Sup"
-}

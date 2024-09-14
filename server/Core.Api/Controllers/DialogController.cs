@@ -20,22 +20,22 @@ namespace Core.Api.Controllers
             _mediator = mediator;
         }
 
-        // [Authorize]
-        // [HttpGet("dialog/list")]
-        // public async Task<IActionResult> ListDialogs()
-        // {
-        //     var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        [Authorize]
+        [HttpGet("dialog/list")]
+        public async Task<IActionResult> ListDialogs()
+        {
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             
-        //     try
-        //     {
-        //         var dialogs = await _mediator.Send(new ListDialogsQuery(userId));
-        //         return Ok(dialogs);
-        //     }
-        //     catch (UnauthorizedAccessException)
-        //     {
-        //         return Unauthorized();
-        //     }
-        // }
+            try
+            {
+                var dialogs = await _mediator.Send(new ListDialogsQuery(userId));
+                return Ok(dialogs);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Unauthorized();
+            }
+        }
 
         // [Authorize]
         // [HttpGet("dialog/{agentId}/list")]
