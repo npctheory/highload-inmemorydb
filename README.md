@@ -21,17 +21,10 @@ docker-compose -f redis.yml up --build -d
 ```bash
 docker-compose -f postgres.yml up --build -d
 ```
-
-Пересобрать приложение отдельно от остальных контейнеров:  
-```bash
-docker-compose -f redis.yml down server -v
-docker-compose -f redis.yml up server --build -d
-docker-compose -f postgres.yml up server --build -d
-```
 ### Redis в качества Primary-БД для сервиса диалогов  
 За работу с хранилищем диалогов отвечает интерфейс [IDialogRepository](https://github.com/npctheory/highload-inmemorydb/blob/main/server/Core.Domain/Interfaces/IDialogRepository.cs), который имплементирует один из двух классов, в зависимости от значения переменной окружения DialogRepositorySettings__Type:  
-[PostgresDialogRepository](https://github.com/npctheory/highload-inmemorydb/blob/main/server/Core.Infrastructure/Repositories/PostgresDialogRepository.cs)  
-[RedisDialogRepository](https://github.com/npctheory/highload-inmemorydb/blob/main/server/Core.Infrastructure/Repositories/RedisDialogRepository.cs)  
+[PostgresDialogRepository](https://github.com/npctheory/highload-inmemorydb/blob/main/server/Core.Infrastructure/Repositories/PostgresDialogRepository.cs) если "Postgres"  
+[RedisDialogRepository](https://github.com/npctheory/highload-inmemorydb/blob/main/server/Core.Infrastructure/Repositories/RedisDialogRepository.cs) если "Redis"    
 ### Lua-скрипты  
 Класс RedisDialogRepository для запросов к Redis использует lua-скрипты, хранящиеся как константы в статическом классе [RedisDialogRepositoryScripts](https://github.com/npctheory/highload-inmemorydb/blob/main/server/Core.Infrastructure/Repositories/RedisDialogRepositoryScripts.cs) .  
 Всего три скрипта:  
@@ -112,3 +105,9 @@ end
 
 return messages
 ```
+
+### Нагрузочное тестирование  
+Нагрузка на запись в Postgres  
+
+
+Нагрузка на запись в Redis  
