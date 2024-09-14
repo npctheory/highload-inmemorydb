@@ -26,7 +26,8 @@ public class RedisDialogRepository : IDialogRepository
             message.ReceiverId,
             message.Text,
             message.IsRead.ToString(),
-            message.Timestamp.ToString("o")
+            message.Timestamp.ToString("o"),
+            key
         });
 
         if (result.ToString() == "OK")
@@ -37,16 +38,58 @@ public class RedisDialogRepository : IDialogRepository
         throw new Exception("Failed to execute Lua script.");
     }
 
-    public Task<List<DialogMessage>> ListMessages(string userId, string agentId)
+    public async Task<List<DialogMessage>> ListMessages(string userId, string agentId)
     {
-        throw new NotImplementedException();
+        var script = RedisDialogRepositoryScripts.ListMessagesLuaScript;
+
+        var result = (RedisResult[])await _database.ScriptEvaluateAsync(script, new RedisKey[] { }, new RedisValue[] { userId, agentId });
+        var dialogMessages = new List<DialogMessage>();
+
+        foreach (RedisResult message in result)
+        {
+            var messageData = (RedisValue[])message;
+            var dialogMessage = new DialogMessage();
+            for (int i = 0; i < messageData.Length; i += 2)
+            {
+                string fieldName = messageData[i].ToString();
+                string fieldValue = messageData[i + 1].ToString();
+
+                switch (fieldName)
+                {
+                    case "Id":
+                        dialogMessage.Id = Guid.Parse(fieldValue);
+                        break;
+                    case "SenderId":
+                        dialogMessage.SenderId = fieldValue;
+                        break;
+                    case "ReceiverId":
+                        dialogMessage.ReceiverId = fieldValue;
+                        break;
+                    case "Text":
+                        dialogMessage.Text = fieldValue;
+                        break;
+                    case "IsRead":
+                        dialogMessage.IsRead = bool.Parse(fieldValue);
+                        break;
+                    case "Timestamp":
+                        dialogMessage.Timestamp = DateTime.Parse(fieldValue);
+                        break;
+                }
+            }
+
+            dialogMessages.Add(dialogMessage);
+        }
+
+        return dialogMessages;
     }
 
-public async Task<List<Dialog>> ListDialogs(string user)
-{
-    var script = RedisDialogRepositoryScripts.ListDialogsLuaScript;
-    var result = (RedisValue[])await _database.ScriptEvaluateAsync(script, new RedisKey[] { }, new RedisValue[] { user });
-    var dialogList = result.Select(agentId => new Dialog { AgentId = agentId }).ToList();
-    return dialogList;
-}
+
+
+    public async Task<List<Dialog>> ListDialogs(string user)
+    {
+        var script = RedisDialogRepositoryScripts.ListDialogsLuaScript;
+        var result = (RedisValue[])await _database.ScriptEvaluateAsync(script, new RedisKey[] { }, new RedisValue[] { user });
+        var dialogList = result.Select(agentId => new Dialog { AgentId = agentId }).ToList();
+        return dialogList;
+    }
 }

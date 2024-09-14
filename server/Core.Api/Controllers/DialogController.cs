@@ -37,22 +37,22 @@ namespace Core.Api.Controllers
             }
         }
 
-        // [Authorize]
-        // [HttpGet("dialog/{agentId}/list")]
-        // public async Task<IActionResult> ListMessages([FromRoute] string agentId)
-        // {
-        //     var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        [Authorize]
+        [HttpGet("dialog/{agentId}/list")]
+        public async Task<IActionResult> ListMessages([FromRoute] string agentId)
+        {
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             
-        //     try
-        //     {
-        //         var messages = await _mediator.Send(new ListMessagesQuery(userId, agentId));
-        //         return Ok(messages);
-        //     }
-        //     catch (UnauthorizedAccessException)
-        //     {
-        //         return Unauthorized();
-        //     }
-        // }
+            try
+            {
+                var messages = await _mediator.Send(new ListMessagesQuery(userId, agentId));
+                return Ok(messages);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Unauthorized();
+            }
+        }
 
 
         [Authorize]

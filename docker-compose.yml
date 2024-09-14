@@ -60,28 +60,28 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
 
-  # server:
-  #   build:
-  #     context: ./server
-  #     dockerfile: ./Core.Api/Dockerfile
-  #   image: server:local
-  #   container_name: server
-  #   restart: unless-stopped
-  #   environment:
-  #     PRIMARY_DB_HOST: pg_master
-  #     PRIMARY_DB_PORT: 5432
-  #     PRIMARY_DB_NAME: highloadsocial
-  #     PRIMARY_DB_USER: postgres
-  #     PRIMARY_DB_PASSWORD: postgres
-  #     ASPNETCORE_ENVIRONMENT: Production
-  #     ASPNETCORE_URLS: "http://*:80"
-  #   depends_on:
-  #     pg_master:
-  #       condition: service_healthy
-  #   networks:
-  #     - highload_net
-  #   ports:
-  #     - "8080:80"
+  server:
+    build:
+      context: ./server
+      dockerfile: ./Core.Api/Dockerfile
+    image: server:local
+    container_name: server
+    restart: unless-stopped
+    environment:
+      PRIMARY_DB_HOST: pg_master
+      PRIMARY_DB_PORT: 5432
+      PRIMARY_DB_NAME: highloadsocial
+      PRIMARY_DB_USER: postgres
+      PRIMARY_DB_PASSWORD: postgres
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: "http://*:80"
+    depends_on:
+      pg_master:
+        condition: service_healthy
+    networks:
+      - highload_net
+    ports:
+      - "8080:80"
       
   redisinsight:
     image: redis/redisinsight:latest
