@@ -4,15 +4,15 @@
 * Приложение .NET WebApi в папке ./server, которое собирается в образ server:local и контейнер server.  
 * Dockerfile и сид базы данных Postgres ./db, который собирается в образ db:local (контейнер pg_master). Библиотекой Faker сгенерированы пользователи, френды, посты.
 * В Docker Compose подключаются контейнеры Redis, RabbitMQ, Redis Insight, PGAdmin.  
-* В папке tests находятся запросы для расширения VSCode REST Client и экспорты коллекций и окружений Postman.  
+* В папке tests находятся запросы для расширения VSCode REST Client, экспорты коллекций и окружений Postman, план теста Dialogs.jmx для Jmeter.  
 ### Начало работы  
-Склонировать проект, сделать cd в корень репозитория и запустить Docker Compose.  
+Склонировать проект, сделать cd в корень репозитория и запустить один из файлов Docker Compose.  
 Дождаться статуса healthy на контейнере pg_master - контейнер станет healthy когда будет загружен сид(может занять некоторое время).  
 ```bash
 https://github.com/npctheory/highload-inmemorydb.git
 cd highload-inmemorydb
 ```
-  
+Есть два файла Docker Compose. Разница только в переменной окружения DialogRepositorySettings__Type, которая указывает какой репозиторий будет инжектится в хэндлеры диалогов в приложении в контейнере server.   
 Запустить проект с сервисом диалогов на Redis  
 ```bash
 docker-compose -f redis.yml up --build -d
