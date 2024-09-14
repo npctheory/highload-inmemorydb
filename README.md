@@ -12,19 +12,17 @@ https://github.com/npctheory/highload-inmemorydb.git
 cd highload-inmemorydb
 ```
   
-Запустить проект с сервисом диалогов в Redis  
+Запустить проект с сервисом диалогов на Redis  
 ```bash
 docker-compose -f redis.yml up --build -d
-docker-compose -f redis.yml down -v
 ```
 
-Запустить проект с сервисом диалогов в Postgres  
+Запустить проект с сервисом диалогов на Postgres  
 ```bash
 docker-compose -f postgres.yml up --build -d
-docker-compose -f postgres.yml down -v
 ```
 
-Пересобрать .net приложение отдельно от остальных контейнеров:  
+Пересобрать приложение отдельно от остальных контейнеров:  
 ```bash
 docker-compose -f redis.yml down server -v
 docker-compose -f redis.yml up server --build -d

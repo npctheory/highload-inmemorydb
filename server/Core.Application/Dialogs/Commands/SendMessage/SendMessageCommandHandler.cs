@@ -25,6 +25,11 @@ public class SendMessageCommandHandler : IRequestHandler<SendMessageCommand, Dia
 
     public async Task<DialogMessageDTO> Handle(SendMessageCommand request, CancellationToken cancellationToken)
     {
+        if(request.ReceiverId == request.SenderId)
+        {
+            throw new Exception();
+        }
+
         DialogMessage message = new DialogMessage{
             SenderId = request.SenderId,
             ReceiverId = request.ReceiverId,
